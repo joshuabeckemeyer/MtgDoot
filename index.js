@@ -43,8 +43,21 @@ client.on('message', async message => {
  		const { body } = await snekfetch.get(`https://api.magicthegathering.io/v1/sets/dom/booster`);
 
  		message.channel.send(`
- 			| ${body.cards[0].name} | ${body.cards[0].cmc} ${body.cards[0].type} ${body.cards[0].text}\n
- 	| ${body.cards[1].name} | ${body.cards[1].cmc} ${body.cards[1].type} ${body.cards[1].text}\n
+ 			| ${body.cards[0].name} | ${body.cards[0].cmc} ${body.cards[0].type}\n
+| ${body.cards[1].name} | ${body.cards[1].cmc} ${body.cards[1].type}\n
+| ${body.cards[2].name} | ${body.cards[2].cmc} ${body.cards[2].type}\n
+| ${body.cards[3].name} | ${body.cards[3].cmc} ${body.cards[3].type}\n
+| ${body.cards[4].name} | ${body.cards[4].cmc} ${body.cards[4].type}\n
+| ${body.cards[5].name} | ${body.cards[5].cmc} ${body.cards[5].type}\n
+| ${body.cards[6].name} | ${body.cards[6].cmc} ${body.cards[6].type}\n
+| ${body.cards[7].name} | ${body.cards[7].cmc} ${body.cards[7].type}\n
+| ${body.cards[8].name} | ${body.cards[8].cmc} ${body.cards[8].type}\n
+| ${body.cards[9].name} | ${body.cards[9].cmc} ${body.cards[9].type}\n
+| ${body.cards[10].name} | ${body.cards[10].cmc} ${body.cards[10].type}\n
+| ${body.cards[11].name} | ${body.cards[11].cmc} ${body.cards[11].type}\n
+| ${body.cards[12].name} | ${body.cards[12].cmc} ${body.cards[12].type}\n
+| ${body.cards[13].name} | ${body.cards[13].cmc} ${body.cards[13].type}\n
+| ${body.cards[14].name}\n
  			`);
  	}
 });
