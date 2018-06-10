@@ -22,22 +22,30 @@ client.on('message', async message => {
 
 	if (message.content === '!ping'){
 		message.channel.send('Pong!');
-	} else if (command === 'cat') {
-		const { body } = await snekfetch.get('https://aws.random.cat/meow');
+	// } else if (command === 'cat') {
+	// 	const { body } = await snekfetch.get('https://aws.random.cat/meow');
 
-		message.channel.send(body.file);
+	// 	message.channel.send(body.file);
 
  	} else if (command === 'mtg'){
 		mtg.card.all({name: `${args.join(' ')}`, pageSize: 1})
 		.on('data', card => {
-			message.channel.send(card.imageUrl)
+			message.channel.send(card[1].imageUrl)
 		})
- 	}
- 	else if (command === 'card'){
+
+ 	} else if (command === 'card'){
  		mtg.card.where({ name: `${args.join(' ')}` })
  		.then(cards =>{
  			message.channel.send(`${cards[0].name}\n ${cards[0].manaCost} | ${cards[0].cmc}\n ${cards[0].type}\n ${cards[0].text}\n ${cards[0].power} / ${cards[0].toughness}`)
  		})
+
+ 	} else if (command === 'booster'){
+ 		const { body } = await snekfetch.get(`https://api.magicthegathering.io/v1/sets/dom/booster`);
+
+ 		message.channel.send(`
+ 			| ${body.cards[0].name} | ${body.cards[0].cmc} ${body.cards[0].type} ${body.cards[0].text}\n
+ 	| ${body.cards[1].name} | ${body.cards[1].cmc} ${body.cards[1].type} ${body.cards[1].text}\n
+ 			`);
  	}
 });
 
