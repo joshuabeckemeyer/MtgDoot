@@ -24,12 +24,13 @@ client.on('message', async message => {
 
 	if (message.content === '!ping'){
 		message.channel.send('Pong!');
-	} else if (command === 'cat') {
-		const { body } = await snekfetch.get('https://aws.random.cat/meow');
+	// } else if (command === 'cat') {
+	// 	const { body } = await snekfetch.get('https://aws.random.cat/meow');
 
-		message.channel.send(body.file);
+	// 	message.channel.send(body.file);
 
  	} else if (command === 'mtg'){
+<<<<<<< HEAD
 		// mtg.card.all()
 		// .on('data', card => {
 		// 	message.channel.send(`${card.imageUrl}`)
@@ -44,6 +45,17 @@ client.on('message', async message => {
 			.then(cards => {
 			    message.channel.send(cards[0].imageUrl) // "Squee, Goblin Nabob"
 			})
+=======
+		// mtg.card.all({name: `${args.join(' ')}`, pageSize: 1})
+		// .on('data', card => {
+		// 	console.log(`${card.name}`)
+		// })
+
+		mtg.card.where({name: `${args.join(' ')}`})
+		.then(cards =>{
+			message.channel.send(`${cards.imageURL}`)
+		})
+>>>>>>> 4f885ba1cdfe31fd47cf744cbd7dd04fa2f84090
 		
 
  	} else if (command === 'card'){
