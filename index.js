@@ -40,11 +40,22 @@ client.on('message', async message => {
  	} else if (command === 'card'){
  		mtg.card.where({ name: `${args.join(' ')}` })
  		.then(cards =>{
- 			message.channel.send(`${cards[0].name}\n ${cards[0].manaCost} | ${cards[0].cmc}\n ${cards[0].type}\n ${cards[0].text}\n ${cards[0].power} / ${cards[0].toughness}`)
+
+ 			const embed = new Discord.RichEmbed()
+			    .setColor('#9e4f24')
+			    .setTitle(cards[0].name)
+			    .addField(`${cards[0].manaCost}`)
+			    .addField(`${cards[0].cmc}`)
+			    .addField(`${cards[0].type}`)
+			    .setFooter(`${cards[0].text}`);
+
+			message.channel.send(embed);
+
+ 			// message.channel.send(`${cards[0].name}\n ${cards[0].manaCost} | ${cards[0].cmc}\n ${cards[0].type}\n ${cards[0].text}\n ${cards[0].power} / ${cards[0].toughness}`)
  		})
 
  	} else if (command === 'booster'){
- 		const { body } = await snekfetch.get(`https://api.magicthegathering.io/v1/sets/dom/booster`);
+ 		const { body } = await snekfetch.get(`https://api.magicthegathering.io/v1/sets`).query({ set: args.join(' ')} +'/booster');
 
  		message.channel.send(`
  			| ${body.cards[0].name} |${body.cards[0].manaCost} ${body.cards[0].cmc} ${body.cards[0].type}\n
