@@ -75,7 +75,9 @@ client.on('message', async message => {
 | ${body.cards[12].name} |${body.cards[12].manaCost} ${body.cards[12].cmc} ${body.cards[12].type}\n
 | ${body.cards[13].name} |${body.cards[13].manaCost} ${body.cards[13].cmc} ${body.cards[13].type}\n
  			`);
- 	} 
+ 	} else if (message.content === '!beep'){
+		client.commands.get('beep').execute(message, args);
+ 	}
 
 });
 
