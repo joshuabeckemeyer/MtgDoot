@@ -27,6 +27,7 @@ client.on('error', err => {
 });
 
 client.on('message', async message => {
+
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).split(/ +/);
@@ -36,24 +37,11 @@ client.on('message', async message => {
 		client.commands.get('ping').execute(message, args);
 
  	} else if (command === 'mtg'){
-		mtg.card.where({ name: `${args.join(' ')}`})
-			.then(cards => {
-			    message.channel.send(cards[0].imageUrl) // "Squee, Goblin Nabob"
-			})
+		client.commands.get('mtg').execute(message, args);
 
  	} else if (command === 'card'){
- 		mtg.card.where({ name: `${args.join(' ')}` })
- 		.then(cards =>{
- 			
- 			const embed = new Discord.RichEmbed()
-			    .setColor('#9e4f24')
-			    .setTitle(cards[0].name)
-			    .addField('Mana Cost', cards[0].manaCost)
-			    .addField('Type', cards[0].type)
-			    .setFooter(cards[0].text);
 
-			message.channel.send(embed);
- 		})
+ 		client.commands.get('card').execute(message, args);
 
  	} else if (command === 'booster'){
  		const { body } = await snekfetch.get(`https://api.magicthegathering.io/v1/sets/grn/booster`).query({ set: args.join(' ')});
@@ -74,9 +62,19 @@ client.on('message', async message => {
 | ${body.cards[11].name} |${body.cards[11].manaCost} ${body.cards[11].cmc} ${body.cards[11].type}\n
 | ${body.cards[12].name} |${body.cards[12].manaCost} ${body.cards[12].cmc} ${body.cards[12].type}\n
 | ${body.cards[13].name} |${body.cards[13].manaCost} ${body.cards[13].cmc} ${body.cards[13].type}\n
+
  			`);
+
+
  	} else if (message.content === '!beep'){
+
 		client.commands.get('beep').execute(message, args);
+
+ 	} else if (message.content === '!lands'){
+ 		client.commands.get('lands').execute(message, args);
+ 		
+ 	} else if (message.content === '!shocklands'){
+ 		client.commands.get('shocklands').execute(message, args);
  	}
 
 });
