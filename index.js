@@ -75,6 +75,8 @@ client.on('message', async message => {
  		
  	} else if (message.content === '!shocklands'){
  		client.commands.get('shocklands').execute(message, args);
+ 	} else if (message.content === '!help'){
+ 		client.commands.get('help').execute(message, args)
  	}
 
 });
