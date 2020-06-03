@@ -33,7 +33,7 @@ client.on('message', async message => {
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
 
-	if (message.content === '!ping'){
+	if (message.content === '>ping'){
 		client.commands.get('ping').execute(message, args);
 
  	} else if (command === 'mtg'){
@@ -44,7 +44,7 @@ client.on('message', async message => {
  		client.commands.get('card').execute(message, args);
 
  	} else if (command === 'booster'){
- 		const { body } = await snekfetch.get(`https://api.magicthegathering.io/v1/sets/grn/booster`).query({ set: args.join(' ')});
+ 		const { body } = await snekfetch.get(`https://api.magicthegathering.io/v1/sets/THB/booster`).query({ set: args.join(' ')});
 
  		message.channel.send(`
 
@@ -66,17 +66,20 @@ client.on('message', async message => {
  			`);
 
 
- 	} else if (message.content === '!beep'){
+ 	} else if (message.content === 'beep'){
 
 		client.commands.get('beep').execute(message, args);
 
- 	} else if (message.content === '!lands'){
+ 	} else if (message.content === 'lands'){
  		client.commands.get('lands').execute(message, args);
  		
- 	} else if (message.content === '!shocklands'){
+ 	} else if (message.content === 'shocklands'){
  		client.commands.get('shocklands').execute(message, args);
- 	} else if (message.content === '!help'){
- 		client.commands.get('help').execute(message, args)
+ 		
+ 	} else if (message.content === 'help'){
+ 		client.commands.get('help').execute(message, args);
+ 	} else if (message.content === 'powernine'){
+ 		client.commands.get('powernine').execute(message, args);
  	}
 
 });

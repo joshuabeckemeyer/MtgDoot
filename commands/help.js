@@ -4,12 +4,13 @@ module.exports = {
     execute(message, args) {
         message.channel.send(`
 Commands!
-|!help: Get list of Commands
-|!card <enter card name here> get text of the card
-|!mtg <enter card name here>: get image of the card
-|!booster: get a pack of the latest set in text
-|!land: Get images of the basic lands
-|!Shocklands: Get images of all the Shocklands
+|>help: Get list of Commands
+|>card <enter card name here>: get text of the card
+|>mtg <enter card name here>: get image of the card
+|>booster: get a pack of the latest set in text
+|>lands: Get images of the basic lands
+|>shocklands: Get images of all the Shocklands
+|>powernine
         	`);
     },
 };

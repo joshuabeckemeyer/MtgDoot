@@ -7,11 +7,11 @@ function printCard(message, cardName) {
       })
 }
 module.exports = {
-    name: 'lands',
-    description: 'Lands!',
+    name: 'powernine',
+    description: 'pownernine',
 
     execute(message, args) {
-        names = ['plains', 'island', 'swamp' , 'mountain', 'forest'];
+        names = ['Black Lotus', 'Ancestral Recall', 'Mox Emerald' , 'Mox Jet', 'Mox Pearl','Mox Ruby', 'Mox Sapphire', 'Timetwister', 'Time Walk', 'Island'];
         for(var i=0; i<names.length; i++) {
           printCard(message, names[i]);
         }
