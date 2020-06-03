@@ -80,7 +80,7 @@ client.on('message', async message => {
  		client.commands.get('help').execute(message, args);
  	} else if (message.content === 'powernine'){
  		client.commands.get('powernine').execute(message, args);
- 	}
+ 	} 
 
 });
 
